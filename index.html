@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Định dạng dãy số và đếm số lượng</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .input-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-container">
+      <h1>Nhập dãy số</h1>
+      <input type="text" id="inputNumbers" placeholder="Nhập dãy số">
+      <button onclick="formatNumbers()">Format</button>
+    </div>
+    <div class="input-container">
+      <h1>Dãy số đã định dạng</h1>
+      <input type="text" id="formattedNumbers" readonly>
+    </div>
+    <div class="input-container">
+      <h1>Số lượng số</h1>
+      <input type="text" id="count" readonly>
+    </div>
+  </div>
+
+  <script>
+    var inputNumbers = document.getElementById("inputNumbers");
+    var formattedNumbers = document.getElementById("formattedNumbers");
+    var count = document.getElementById("count");
+
+    function formatNumbers() {
+      var numbers = inputNumbers.value.split(" ");
+      var formatted = formatNumberArray(numbers);
+      formattedNumbers.value = formatted;
+      var countResult = countNumbers(numbers);
+      count.value = countResult;
+    }
+
+    function formatNumberArray(numbers) {
+      var formatted = numbers.map(function(number) {
+        return "'" + number.trim() + "'";
+      }).join(", ");
+      return formatted;
+    }
+
+    function countNumbers(numbers) {
+      return numbers.length;
+    }
+  </script>
+</body>
+</html>
